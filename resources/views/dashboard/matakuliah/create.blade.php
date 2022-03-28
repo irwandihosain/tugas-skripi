@@ -173,21 +173,37 @@
                                             </select>
                                         </div>
                                         <br>
-                                        <div class="form-group mb-3">
-                                            <label>Nama Matakuliah</label>
-                                            <input type="text" name="namaMatakuliah" class="form-control">
+                                        <div class="mb-3">
+                                            <label for="matakuliah" class="form-label">Nama Matakuliah</label>
+                                            <select class="form-select" name="namaMatakuliah">
+                                                @foreach($matakuliahs as $matakuliah)
+                                                <option value="{{ $matakuliah->nama }}">{{ $matakuliah->nama }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label>Hari</label>
-                                            <input type="text" name="hari" class="form-control">
+                                        <div class="mb-3">
+                                            <label for="hari" class="form-label">Hari</label>
+                                            <select class="form-select" name="hari">
+                                                @foreach($haris as $hari)
+                                                <option value="{{ $hari->nama }}">{{ $hari->nama }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label>Ruangan</label>
-                                            <input type="text" name="ruangan" class="form-control">
+                                        <div class="mb-3">
+                                            <label for="ruangan" class="form-label">Ruangan</label>
+                                            <select class="form-select" name="ruangan">
+                                                @foreach($ruangans as $ruangan)
+                                                <option value="{{ $ruangan->nama }}">{{ $ruangan->nama }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label>Kelas</label>
-                                            <input type="text" name="kelas" class="form-control">
+                                        <div class="mb-3">
+                                            <label for="kelas" class="form-label">Kelas</label>
+                                            <select class="form-select" name="kelas">
+                                                @foreach($kelass as $kelas)
+                                                <option value="{{ $kelas->nama }}">{{ $kelas->nama }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group mb-3">
                                             <label>Jam</label>

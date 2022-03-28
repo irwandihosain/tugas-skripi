@@ -7,16 +7,12 @@ use Kreait\Firebase\Contract\Database;
 
 class history extends Controller
 {
-    public function __construct(Database $database)
-    {
-        $this->database = $database;
-        $this->tablename = 'Matakuliah';
-    }
     public function index()
-    {
-        $absensii = $this->database->getReference('Matakuliah')->getValue();
-        // dd($absensii);
-        return view('dashboard.history.index', compact('absensii'));
+    { {
+            return view('dashboard/history/index', [
+                "title" => "History"
+            ]);
+        }
     }
     public function show($id)
     {

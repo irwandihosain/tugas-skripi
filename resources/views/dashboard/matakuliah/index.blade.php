@@ -111,7 +111,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Nama Dosen</th>
-                                            <th>Mata Kuliah</th>
+                                            <th>Matakuliah</th>
                                             <th>Jam</th>
                                             <th>Ruangan</th>
                                             <th>Tanggal Mulai</th>
@@ -146,9 +146,9 @@
                                             <td>{{ $mata_kuliah->tanggalMulai  }}</td>
                                             <td>{{ $mata_kuliah->jumlahPertemuan  }}</td>
                                             <td>{{ $mata_kuliah->kelas  }}</td>
-                                            <td><a href="{{ url('show-matakuliah/'.$mata_kuliah->uuid) }}" class="btn btn-sm btn-primary">View</a></td>
-                                            <td><a href="{{ url('edit-matakuliah/'.$mata_kuliah->uuid) }}" class="btn btn-sm btn-success">Edit</a></td>
-                                            <td><a href="#" class="btn btn-sm btn-danger">Delete</a></td>
+                                            <td><a href="{{ url('show-matakuliah/'.$mata_kuliah->id) }}" class="btn btn-sm btn-primary">View</a></td>
+                                            <td><a href="{{ url('edit-matakuliah/'.$mata_kuliah->id) }}" class="btn btn-sm btn-success">Edit</a></td>
+                                            <td><a href="{{ url('delete-matakuliah/'.$mata_kuliah->id) }}" class="btn btn-sm btn-danger">Delete</a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>

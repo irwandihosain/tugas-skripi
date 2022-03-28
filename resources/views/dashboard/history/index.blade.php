@@ -102,35 +102,27 @@
                     <!-- top tiles -->
                     <div class="row" style="display: inline-block;">
                         <div class="card">
+                            <div class="card-header">
+                                <a href="/add-matakuliah" class="btn btn-sm btn-primary ">Tambah Jadwal</a>
+                            </div>
                             <div class="card-body">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Mata Kuliah</th>
+                                            <th>Nama Dosen</th>
+                                            <th>Matakuliah</th>
+                                            <th>Jam</th>
+                                            <th>Ruangan</th>
+                                            <th>Tanggal Mulai</th>
+                                            <th>Tanggal Selesai</th>
+                                            <th>Jumlah Pertemuan</th>
                                             <th>Kelas</th>
-                                            <th>Action</th>
+                                            <th>Mahasiswa</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @php
-                                        $i = 1;
-                                        @endphp
-                                        @if (is_array($absensii) || is_object($absensii))
-                                        @foreach ($absensii as $key => $absensi)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>{{ $absensi['namaMatakuliah'] }}</td>
-                                            <td>{{ $absensi['kelas'] }}</td>
-                                            <td><a href="{{ url('lihat-history/'.$key) }}" class="btn btn-sm btn-primary">View</a></td>
-                                        </tr>
-                                        @endforeach
-                                        @else
-                                        <tr>
-                                            <td colspan="?">No Record Found</td>
-                                        </tr>
-                                        @endif
-                                    </tbody>
                                 </table>
                             </div>
                         </div>

@@ -8,6 +8,7 @@ use App\Models\Hari;
 use App\Models\Kelas;
 use App\Models\Pertemuan;
 use App\Models\RealMatakuliah;
+use App\Models\Ruangan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -36,6 +37,16 @@ class DatabaseSeeder extends Seeder
             "nama" => "jennifer anniston",
             "email" => "jenniferanniston@gmail.com",
             "password" => bcrypt('12345'),
+        ]);
+
+        Ruangan::create([
+            "nama" => "401",
+        ]);
+        Ruangan::create([
+            "nama" => "402",
+        ]);
+        Ruangan::create([
+            "nama" => "403",
         ]);
 
         Dosen::create([

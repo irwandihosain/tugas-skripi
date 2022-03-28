@@ -164,22 +164,13 @@
                                     </h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ url('update-matakuliah/'.$key) }}" method="post" autocomplete="off">
+                                    <form action="{{ url('update-matakuliah/'.$editdata->uuid) }}" method="post" autocomplete="off">
                                         @csrf
                                         <label for="dosen">Nama Dosen</label>    
                                             <div id="example-optionClass-container">
                                                 <select name='dosen[]' id="example-optionClass" multiple="multiple">
-                                                    @foreach( $dosen_data as $dosen )
-                                                <option value="{{ $dosen['name'] }}">{{ $dosen['name'] }}</option>
-                                                @endforeach
-                                            </select>
-                                            </div>
-                                            <br>
-                                        <label for="dosen">Kode Dosen</label>    
-                                            <div id="example-optionClass-container-irwandi">
-                                                <select name='KodeDosen[]' id="example-optionClass-irwandi" multiple="multiple">
-                                                    @foreach( $dosen_data as $dosen )
-                                                <option value="{{ $dosen['uid'] }}">{{ $dosen['kodeDosen'] }}</option>
+                                                    @foreach( $dosens as $dosen )
+                                                <option value="{{ $dosen['id'] }}">{{ $dosen['nama'] }}</option>
                                                 @endforeach
                                             </select>
                                             </div>
@@ -187,27 +178,23 @@
                                         <div class="mb-3">
                                             <label for="namaMatakuliah" class="form-label">Nama Matakuliah</label>
                                             <select class="form-select" name="namaMatakuliah">
-                                                @foreach( $namaMatakuliahh as $namaMatakuliah1 )
-                                                @if($editdata['namaMatakuliah'] == $namaMatakuliah1['namaMatakuliah'])
-                                                <option value="{{ $namaMatakuliah1['namaMatakuliah'] }}" selected>{{ $editdata['namaMatakuliah'] }}</option>
+                                                @foreach( $namaMatakuliahh as $namaMatakuliah )
+                                                @if($editdata['namaMatakuliah'] == $namaMatakuliah['nama'])
+                                                <option value="{{ $namaMatakuliah['nama'] }}" selected>{{ $editdata['namaMatakuliah'] }}</option>
                                                 @else
-                                                <option value="{{ $namaMatakuliah1['namaMatakuliah'] }}">{{ $namaMatakuliah1['namaMatakuliah'] }}</option>
+                                                <option value="{{ $namaMatakuliah['nama'] }}">{{ $namaMatakuliah['nama'] }}</option>
                                                 @endif
                                                 @endforeach
                                             </select>
                                         </div>               
-                                        {{-- <div class="form-group mb-3">
-                                            <label>Hari</label>
-                                            <input type="text" name="hari" class="form-control" value="{{ $editdata['hari'] }}">
-                                        </div> --}}
                                         <div class="mb-3">
                                             <label for="ruangan" class="form-label">Ruangan</label>
                                             <select class="form-select" name="ruangan">
                                                 @foreach( $ruangans as $ruangan )
-                                                @if($editdata['ruangan'] == $ruangan['ruangan'])
-                                                <option value="{{ $ruangan['ruangan'] }}" selected>{{ $editdata['ruangan'] }}</option>
+                                                @if($editdata['nama'] == $ruangan['nama'])
+                                                <option value="{{ $ruangan['nama'] }}" selected>{{ $editdata['nama'] }}</option>
                                                 @else
-                                                <option value="{{ $ruangan['ruangan'] }}">{{ $ruangan['ruangan'] }}</option>
+                                                <option value="{{ $ruangan['nama'] }}">{{ $ruangan['nama'] }}</option>
                                                 @endif
                                                 @endforeach
                                             </select>
@@ -216,10 +203,22 @@
                                             <label for="kelas" class="form-label">Kelas</label>
                                             <select class="form-select" name="kelas">
                                                 @foreach( $kelass as $kelas )
-                                                @if($editdata['kelas'] == $kelas['kelas'])
-                                                <option value="{{ $kelas['kelas'] }}" selected>{{ $editdata['kelas'] }}</option>
+                                                @if($editdata['nama'] == $kelas['nama'])
+                                                <option value="{{ $kelas['nama'] }}" selected>{{ $editdata['nama'] }}</option>
                                                 @else
-                                                <option value="{{ $kelas['kelas'] }}">{{ $kelas['kelas'] }}</option>
+                                                <option value="{{ $kelas['nama'] }}">{{ $kelas['nama'] }}</option>
+                                                @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="kelas" class="form-label">Hari</label>
+                                            <select class="form-select" name="hari">
+                                                @foreach( $haris as $hari )
+                                                @if($editdata['nama'] == $hari['nama'])
+                                                <option value="{{ $hari['nama'] }}" selected>{{ $editdata['nama'] }}</option>
+                                                @else
+                                                <option value="{{ $hari['nama'] }}">{{ $hari['nama'] }}</option>
                                                 @endif
                                                 @endforeach
                                             </select>

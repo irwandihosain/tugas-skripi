@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\Fakultas;
+use App\Models\Hari;
+use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
+use App\Models\RealMatakuliah;
 use App\Models\relasiModel;
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -18,6 +22,7 @@ class MataKuliahController extends Controller
     public function index()
     {
         // dd($users);
+
         return view('dashboard/matakuliah/index', [
             'mata_kuliahs' => Matakuliah::all(),
         ]);
@@ -25,11 +30,16 @@ class MataKuliahController extends Controller
     public function create()
     {
         return view('dashboard/matakuliah/create', [
-            'dosens' => Dosen::all()
+            'dosens' => Dosen::all(),
+            'ruangans' => Ruangan::all(),
+            'haris' => Hari::all(),
+            'kelass' => Kelas::all(),
+            'matakuliahs' => RealMatakuliah::all()
         ]);
     }
     public function store(Request $request)
     {
+        // dd($request);
         $db = mysqli_connect('localhost', 'root', '', 'tugas-skripsi') or die($db);
         // dd($request);
         $date = $request->tanggalMulai;
@@ -79,14 +89,20 @@ class MataKuliahController extends Controller
 
         return redirect('mata-kuliah')->with('success', 'Jadwal baru telah dibuat');
     }
-    public function edit($id)
+    public function edit(Matakuliah $matakuliah)
     {
+        return view('dashboard/matakuliah/edit', [
+            'editdata' => $matakuliah,
+            'dosens' => Dosen::all(),
+            'ruangans' => Ruangan::all(),
+            'haris' => Hari::all(),
+            'kelass' => Kelas::all(),
+            'namaMatakuliahh' => RealMatakuliah::all()
+        ]);
     }
-    public function update(Request $request, $id)
+    public function update(Request $request, Matakuliah $matakuliah)
     {
         // dd($request);
-        $key = $id;
-
         $date = $request->tanggalMulai;
         $date1 = strtotime($date);
         $tanggal1 = date('d-m-Y', $date1);
@@ -95,37 +111,35 @@ class MataKuliahController extends Controller
         $tanggalselesai2 = strtotime($tanggalselesai1);
         $tanggalSelesai1 = date('d-m-Y', $tanggalselesai2);
 
-        $updateData = [
-            'dosen' => $request->dosen,
-            'kodeDosen' => $request->KodeDosen,
-            'namaMatakuliah' => $request->namaMatakuliah,
-            'jam' => $request->jam,
-            'ruangan' => (float)$request->ruangan,
-            'tanggalMulai' => $tanggal1,
-            'tanggalSelesai' => $tanggalSelesai1,
-            'jumlahPertemuan' => (float)$request->jumlahPertemuan,
-            'kelas' => $request->kelas,
-            'id' => $key
+        $uuid = Uuid::uuid4()->toString();
 
-        ];
-        $res_updated = $this->database->getReference($this->tablename . '/' . $key)
-            ->update($updateData);
+        Matakuliah::where('uuid', $matakuliah->uuid)
+            ->update([
+                'uuid' => $uuid,
+                'namaMatakuliah' => $request->namaMatakuliah,
+                'jam' => $request->jam,
+                'ruangan' => $request->ruangan,
+                'tanggalMulai' => $request->tanggalMulai,
+                'tanggalSelesai' => $request->tanggalSelesai,
+                'jumlahPertemuan' => $request->jumlahPertemuan,
+                'kelas' => $request->kelas,
+            ]);
 
-        if ($res_updated) {
-            return redirect('mata-kuliah')->with('success', 'Data Updated Succesfully');
-        } else {
-            return redirect('mata-kuliah')->with('warning', 'Data Not Updated');
+        $dosen_ids = $request->dosen;
+
+        foreach ($dosen_ids as $dosen_id) {
+            relasiModel::create([
+                'dosen_id' => $dosen_id,
+                'matakuliah_id' => $uuid,
+            ]);
         }
+        return redirect('mata-kuliah')->with('success', 'Jadwal berhasil diperbaharui');
     }
-    public function destroy($id)
+    public function destroy(Matakuliah $matakuliah,)
     {
-        $key = $id;
-        $del_data =  $this->database->getReference($this->tablename . '/' . $key)->remove();
-        if ($del_data) {
-            return redirect('mata-kuliah')->with('success', 'Data Deleted Succesfully');
-        } else {
-            return redirect('mata-kuliah')->with('warning', 'Data Not Deleted');
-        }
+        Matakuliah::destroy($matakuliah->id);
+
+        return redirect('mata-kuliah')->with('warning', 'Data Deleted Succesfellu');
     }
     public function show($key)
     {

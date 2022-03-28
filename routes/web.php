@@ -72,9 +72,9 @@ Route::post('mengupdate-mahasiswa/{id}/{id2}', [MataKuliahController::class, 'me
 Route::get('tambah-mahasiswa/{id}', [MataKuliahController::class, 'tambah']);
 Route::post('tambah-mahasiswa/{id}', [MataKuliahController::class, 'gudang']);
 Route::get('hancurkan-mahasiswa/{mahasiswa:id}/{matakuliah:id}', [MataKuliahController::class, 'hancurkan']);
-Route::get('delete-matakuliah/{id}', [MataKuliahController::class, 'destroy']);
-Route::post('update-matakuliah/{id}', [MataKuliahController::class, 'update']);
-Route::get('edit-matakuliah/{id}', [MataKuliahController::class, 'edit']);
+Route::get('delete-matakuliah/{matakuliah:id}', [MataKuliahController::class, 'destroy']);
+Route::post('update-matakuliah/{matakuliah:uuid}', [MataKuliahController::class, 'update']);
+Route::get('edit-matakuliah/{matakuliah:id}', [MataKuliahController::class, 'edit']);
 Route::get('show-matakuliah/{id}', [MataKuliahController::class, 'show']);
 Route::post('/add-matakuliah', [MataKuliahController::class, 'store']);
 Route::get('/add-matakuliah', [MataKuliahController::class, 'create']);
