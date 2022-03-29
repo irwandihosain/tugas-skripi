@@ -16,6 +16,7 @@ class CreateQrCodesTable extends Migration
         Schema::create('qr_codes', function (Blueprint $table) {
             $table->id();
             $table->string('qrcode_img');
+            $table->foreignId('id_daftarMahasiswa');
             $table->timestamps();
         });
     }

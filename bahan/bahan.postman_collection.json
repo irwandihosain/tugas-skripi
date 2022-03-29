@@ -176,7 +176,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/mata-kuliah/show/51d8c968-dab3-4a38-8865-0ff69dc269ff",
+					"raw": "http://127.0.0.1:8000/api/mata-kuliah/show/4b0a0996-a858-4a8e-b4fc-58b5d18f1f59",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -189,7 +189,7 @@
 						"api",
 						"mata-kuliah",
 						"show",
-						"51d8c968-dab3-4a38-8865-0ff69dc269ff"
+						"4b0a0996-a858-4a8e-b4fc-58b5d18f1f59"
 					]
 				}
 			},
@@ -255,6 +255,75 @@
 						"mata-kuliah",
 						"update",
 						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "relasiModel",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/relasiModel",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"relasiModel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dosen",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/dosen",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"dosen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mata-kuliah",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/mata-kuliah",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"mata-kuliah"
 					]
 				}
 			},

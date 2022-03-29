@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Helper\ApiFormatter;
 use App\Http\Controllers\Controller;
+use App\Models\Dosen;
 use App\Models\Matakuliah;
 use App\Models\relasiModel;
 use Exception;
@@ -146,6 +147,28 @@ class MatakuliahController extends Controller
             return ApiFormatter::createApi(200, 'Success');
         } else {
             return ApiFormatter::createApi(400, 'Failed!');
+        }
+    }
+
+    public function indexRelasiModel()
+    {
+        $data = relasiModel::all();
+
+        if ($data) {
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
+    }
+
+    public function indexDosen()
+    {
+        $data = Dosen::all();
+
+        if ($data) {
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
         }
     }
 }
