@@ -65,8 +65,6 @@ class MataKuliahController extends Controller
         //     'kelas' => '',
         // ]);
 
-        $validatedData = $request->file('image')->store('file-image');
-
         Matakuliah::create([
             'uuid' => $uuid,
             'namaMatakuliah' => $request->namaMatakuliah,
@@ -76,11 +74,6 @@ class MataKuliahController extends Controller
             'tanggalSelesai' => $request->tanggalSelesai,
             'jumlahPertemuan' => $request->jumlahPertemuan,
             'kelas' => $request->kelas,
-        ]);
-
-        QrCode::create([
-            'qrcode_img' => $validatedData,
-            'id_daftarMahasiswa' => 1
         ]);
 
         $dosen_ids = $request->dosen_id;

@@ -173,10 +173,6 @@
                                             </select>
                                         </div>
                                         <br>
-                                        <div class="input-group mb-3">
-                                            <input type="file" class="form-control" name="image" id="image">
-                                            <label class="input-group-text" for="image">Upload</label>
-                                        </div>
                                         <div class="mb-3">
                                             <label for="matakuliah" class="form-label">Nama Matakuliah</label>
                                             <select class="form-select" name="namaMatakuliah">

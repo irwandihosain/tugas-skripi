@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Mar 2022 pada 14.28
+-- Waktu pembuatan: 04 Apr 2022 pada 11.38
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `tugas-skripsi`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `daftar_mahasiswas`
+--
+
+CREATE TABLE `daftar_mahasiswas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nim` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -43,11 +57,9 @@ CREATE TABLE `dosens` (
 --
 
 INSERT INTO `dosens` (`id`, `nama`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'axel', 'axel@gmail.com', NULL, '$2y$10$921zFGMa/Q80aH9pHrnjfumWycNqS6PaWbUOK.aJYHywKk0w30rEi', NULL, '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(2, 'irwandi', 'irwandi@gmail.com', NULL, '$2y$10$JTlsog.woc/yANU4gzrNxe9fSn5DTRyYVGektZKw8EjGhx4Gzp/pa', NULL, '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(3, 'tom', 'tom@gmail.com', NULL, '$2y$10$75CLV14UMk8z8FU3iKdvnOEwxBgOwY5W2GV14dq4PvcwZR8/C1NLC', NULL, '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(4, 'Marhandam', 'marhandam.palindung@gmail.com', NULL, '$2y$10$EKtG.ybSj7quQk/atEbxdOb/mbjCvi9L.HPOfRDtvSIgsKmMUvJj2', NULL, '2022-03-26 03:40:46', '2022-03-26 03:40:46'),
-(5, 'Fajar', 'fajar@gmail.com', NULL, '$2y$10$DKeoZwZXIw32/dEm4EcmXeMg/uCNEfMP/XhjEUqdm0QUVE2XJenI.', NULL, '2022-03-26 03:55:37', '2022-03-26 03:55:37');
+(1, 'axel', 'axel@gmail.com', NULL, '$2y$10$ueBh8B8QHZovvz0XFnvAcOFVwXes0JxYU8UYXrz8rKU.QVBn9aJ3O', NULL, '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(2, 'irwandi', 'irwandi@gmail.com', NULL, '$2y$10$zsnxaFVU/qNHwEyR5ZCmPuteJUokss4rAucVomlTmlemGERlBIu2i', NULL, '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(3, 'tom', 'tom@gmail.com', NULL, '$2y$10$G9LBMhb1ZtfrvZSgOFnFaOCPEAyW3XjUz0tMvzoyqJvDuSUr1IxYi', NULL, '2022-04-03 23:54:07', '2022-04-03 23:54:07');
 
 -- --------------------------------------------------------
 
@@ -83,8 +95,8 @@ CREATE TABLE `fakultas` (
 --
 
 INSERT INTO `fakultas` (`id`, `nama`, `created_at`, `updated_at`) VALUES
-(1, 'Teknik', '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(2, 'Ekonomi dan Ilmu Sosial', '2022-03-24 07:35:26', '2022-03-24 07:35:26');
+(1, 'Teknik', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(2, 'Ekonomi dan Ilmu Sosial', '2022-04-03 23:54:07', '2022-04-03 23:54:07');
 
 -- --------------------------------------------------------
 
@@ -104,9 +116,9 @@ CREATE TABLE `haris` (
 --
 
 INSERT INTO `haris` (`id`, `nama`, `created_at`, `updated_at`) VALUES
-(1, 'Senin', '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(2, 'Selasa', '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(3, 'Rabu', '2022-03-24 07:35:26', '2022-03-24 07:35:26');
+(1, 'Senin', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(2, 'Selasa', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(3, 'Rabu', '2022-04-03 23:54:07', '2022-04-03 23:54:07');
 
 -- --------------------------------------------------------
 
@@ -126,9 +138,9 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id`, `nama`, `created_at`, `updated_at`) VALUES
-(1, 'Teknik Elektro 1', '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(2, 'Teknik Elektro 2', '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(3, 'Teknik Elektro 3', '2022-03-24 07:35:26', '2022-03-24 07:35:26');
+(1, 'Teknik Elektro 1', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(2, 'Teknik Elektro 2', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(3, 'Teknik Elektro 3', '2022-04-03 23:54:07', '2022-04-03 23:54:07');
 
 -- --------------------------------------------------------
 
@@ -144,15 +156,6 @@ CREATE TABLE `mahasiswas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `mahasiswas`
---
-
-INSERT INTO `mahasiswas` (`id`, `nama`, `nim`, `matakuliah_id`, `created_at`, `updated_at`) VALUES
-(1, 'Tempor dolore ut eum', 'Ipsum delectus itaq', '3', '2022-03-26 03:02:37', '2022-03-26 03:02:37'),
-(2, 'Eaque labore saepe s', 'Aut qui et non dolor', '3', '2022-03-26 03:02:49', '2022-03-26 03:02:49'),
-(3, 'Vel qui repellendus', 'Pariatur Ab labore', '3', '2022-03-26 03:03:00', '2022-03-26 03:03:00');
 
 -- --------------------------------------------------------
 
@@ -179,7 +182,8 @@ CREATE TABLE `matakuliahs` (
 --
 
 INSERT INTO `matakuliahs` (`id`, `uuid`, `ruangan`, `jam`, `namaMatakuliah`, `jumlahPertemuan`, `kelas`, `tanggalMulai`, `tanggalSelesai`, `created_at`, `updated_at`) VALUES
-(3, '6a05c463-4e91-45e2-8b51-c1bf0df383c3', '402', '19:00', 'Matematika', '12', 'Teknik Elektro 2', '2022-03-26', '2022-03-26', '2022-03-26 03:01:06', '2022-03-26 03:01:06');
+(1, '6f12f763-a20b-4777-b9e7-578523b094cd', '401', '15:24', 'Bahasa Indonesia', '12', 'Teknik Elektro 2', '1992-04-17', '2016-03-26', '2022-04-04 01:28:34', '2022-04-04 01:28:34'),
+(2, 'cf1476bb-7b9c-45a8-875a-6248550f5e6a', '401', '17:28', 'Bahasa Indonesia', '13', 'Teknik Elektro 1', '2022-04-04', '2022-04-04', '2022-04-04 01:29:27', '2022-04-04 01:29:27');
 
 -- --------------------------------------------------------
 
@@ -211,7 +215,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2022_03_19_093057_create_haris_table', 1),
 (12, '2022_03_19_093124_create_pertemuans_table', 1),
 (13, '2022_03_21_061848_create_relasi_models_table', 1),
-(14, '2022_03_22_080307_create_mahasiswas_table', 1);
+(14, '2022_03_22_080307_create_mahasiswas_table', 1),
+(15, '2022_03_28_071444_create_daftar_mahasiswas_table', 1),
+(16, '2022_03_28_071828_create_qr_codes_table', 1);
 
 -- --------------------------------------------------------
 
@@ -261,9 +267,32 @@ CREATE TABLE `pertemuans` (
 --
 
 INSERT INTO `pertemuans` (`id`, `nama`, `created_at`, `updated_at`) VALUES
-(1, '1', '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(2, '2', '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(3, '3', '2022-03-24 07:35:26', '2022-03-24 07:35:26');
+(1, '1', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(2, '2', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(3, '3', '2022-04-03 23:54:07', '2022-04-03 23:54:07');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `qr_codes`
+--
+
+CREATE TABLE `qr_codes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `qrcode_img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_daftarMahasiswa` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `qr_codes`
+--
+
+INSERT INTO `qr_codes` (`id`, `qrcode_img`, `id_daftarMahasiswa`, `created_at`, `updated_at`) VALUES
+(1, 'file-image/E4hwN558uicdj2SDG3xYEPgUEMy95pGwt0GG1GLl.jpg', NULL, '2022-04-03 23:58:05', '2022-04-03 23:58:05'),
+(2, 'file-image/DwxnT5LCblOzjYTgUZo9VCQ1i9OaZqAhZbgEGssF.jpg', NULL, '2022-04-04 00:10:38', '2022-04-04 00:10:38'),
+(3, 'file-image/dZB6hr9BUCX9JGkwv8NfhbkUJ12h2AZecsulyOkO.jpg', NULL, '2022-04-04 01:04:23', '2022-04-04 01:04:23');
 
 -- --------------------------------------------------------
 
@@ -283,9 +312,9 @@ CREATE TABLE `real_matakuliahs` (
 --
 
 INSERT INTO `real_matakuliahs` (`id`, `nama`, `created_at`, `updated_at`) VALUES
-(1, 'Bahasa Indonesia', '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(2, 'Matematika', '2022-03-24 07:35:26', '2022-03-24 07:35:26'),
-(3, 'Programming', '2022-03-24 07:35:26', '2022-03-24 07:35:26');
+(1, 'Bahasa Indonesia', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(2, 'Matematika', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(3, 'Programming', '2022-04-03 23:54:07', '2022-04-03 23:54:07');
 
 -- --------------------------------------------------------
 
@@ -306,12 +335,10 @@ CREATE TABLE `relasi_models` (
 --
 
 INSERT INTO `relasi_models` (`id`, `matakuliah_id`, `dosen_id`, `created_at`, `updated_at`) VALUES
-(1, 'e06f032d-3a53-458c-84f7-3dbd2379fb33', 1, '2022-03-24 07:35:47', '2022-03-24 07:35:47'),
-(2, 'e06f032d-3a53-458c-84f7-3dbd2379fb33', 2, '2022-03-24 07:35:47', '2022-03-24 07:35:47'),
-(3, '6e72bb59-09eb-4d6f-8928-cbe5a5ef7341', 2, '2022-03-24 07:36:02', '2022-03-24 07:36:02'),
-(4, '6e72bb59-09eb-4d6f-8928-cbe5a5ef7341', 3, '2022-03-24 07:36:02', '2022-03-24 07:36:02'),
-(5, '6a05c463-4e91-45e2-8b51-c1bf0df383c3', 1, '2022-03-26 03:01:06', '2022-03-26 03:01:06'),
-(6, '6a05c463-4e91-45e2-8b51-c1bf0df383c3', 2, '2022-03-26 03:01:06', '2022-03-26 03:01:06');
+(1, '6f12f763-a20b-4777-b9e7-578523b094cd', 1, '2022-04-04 01:28:34', '2022-04-04 01:28:34'),
+(2, '6f12f763-a20b-4777-b9e7-578523b094cd', 2, '2022-04-04 01:28:34', '2022-04-04 01:28:34'),
+(3, 'cf1476bb-7b9c-45a8-875a-6248550f5e6a', 1, '2022-04-04 01:29:27', '2022-04-04 01:29:27'),
+(4, 'cf1476bb-7b9c-45a8-875a-6248550f5e6a', 2, '2022-04-04 01:29:27', '2022-04-04 01:29:27');
 
 -- --------------------------------------------------------
 
@@ -325,6 +352,15 @@ CREATE TABLE `ruangans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `ruangans`
+--
+
+INSERT INTO `ruangans` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, '401', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(2, '402', '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(3, '403', '2022-04-03 23:54:07', '2022-04-03 23:54:07');
 
 -- --------------------------------------------------------
 
@@ -348,13 +384,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'irwandi hosain', 'irwandihhosain@gmail.com', NULL, '$2y$10$iDRfAAKoj2LKx3PecSVQ/uSQLU9Qrj0QoA3XaVLkWeNbNSsxwO68.', NULL, '2022-03-24 07:35:25', '2022-03-24 07:35:25'),
-(2, 'tom cruise', 'tomcruise@gmail.com', NULL, '$2y$10$cJyXtWky/rFQQ8TIZKyU.e0gYJ1pQ3HYcEOtc.jcuvTxa5zv5LnXq', NULL, '2022-03-24 07:35:25', '2022-03-24 07:35:25'),
-(3, 'jennifer anniston', 'jenniferanniston@gmail.com', NULL, '$2y$10$KcwZDqZI5tYrVScskO9iyunezpvvORxZ0Va2KMPaWFG0jqFzlXps.', NULL, '2022-03-24 07:35:25', '2022-03-24 07:35:25');
+(1, 'irwandi hosain', 'irwandihhosain@gmail.com', NULL, '$2y$10$0Mu9.PCL84ttBl3U4JiTyeJBs8WcTNKT.G7aOdNqPlklOcVLO0Qca', NULL, '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(2, 'tom cruise', 'tomcruise@gmail.com', NULL, '$2y$10$Kp2PhPpE8FzDpcH4G9V0.OhV4TVg8RUvEX4MkQUzIIDcRlY5FPx5K', NULL, '2022-04-03 23:54:07', '2022-04-03 23:54:07'),
+(3, 'jennifer anniston', 'jenniferanniston@gmail.com', NULL, '$2y$10$S5MqBPMwSwM2Qgy3l4gy6eYWA.hGF6TvfipWVfHmoxUa4WAucV3ei', NULL, '2022-04-03 23:54:07', '2022-04-03 23:54:07');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `daftar_mahasiswas`
+--
+ALTER TABLE `daftar_mahasiswas`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `dosens`
@@ -428,6 +470,12 @@ ALTER TABLE `pertemuans`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `qr_codes`
+--
+ALTER TABLE `qr_codes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `real_matakuliahs`
 --
 ALTER TABLE `real_matakuliahs`
@@ -457,10 +505,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `daftar_mahasiswas`
+--
+ALTER TABLE `daftar_mahasiswas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `dosens`
 --
 ALTER TABLE `dosens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
@@ -490,30 +544,36 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT untuk tabel `mahasiswas`
 --
 ALTER TABLE `mahasiswas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `matakuliahs`
 --
 ALTER TABLE `matakuliahs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `pertemuans`
 --
 ALTER TABLE `pertemuans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `qr_codes`
+--
+ALTER TABLE `qr_codes`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -526,13 +586,13 @@ ALTER TABLE `real_matakuliahs`
 -- AUTO_INCREMENT untuk tabel `relasi_models`
 --
 ALTER TABLE `relasi_models`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `ruangans`
 --
 ALTER TABLE `ruangans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

@@ -10,6 +10,7 @@ use App\Models\QrCode;
 use App\Models\relasiModel;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
 
 class MatakuliahController extends Controller
@@ -51,13 +52,13 @@ class MatakuliahController extends Controller
 
     public function getQrCode($id)
     {
-        qrCode::where('qrcode_img', '=', $id)->get();
+        $data = DB::table('qr_codes')->where('qrcode_img', $id)->get();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Berhasil mendapatkan',
-            'qrcode_img' => $id,
-        ], 200);
+        if ($data) {
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
     }
     /**
      * Store a newly created resource in storage.
