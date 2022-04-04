@@ -42,6 +42,8 @@
                     <div class="clearfix"></div>
                     <br />
 
+                    @include('sweetalert::alert') 
+
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
@@ -169,7 +171,6 @@
             <!-- /footer content -->
         </div>
     </div>
-    @include('sweetalert::alert')
     <!-- jQuery -->
     <script src="/adminlte/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->

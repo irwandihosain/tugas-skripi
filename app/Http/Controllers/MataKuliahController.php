@@ -8,6 +8,7 @@ use App\Models\Hari;
 use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
+use App\Models\QrCode;
 use App\Models\RealMatakuliah;
 use App\Models\relasiModel;
 use App\Models\Ruangan;
@@ -39,7 +40,7 @@ class MataKuliahController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request);
+        // ddd($request);
         $db = mysqli_connect('localhost', 'root', '', 'tugas-skripsi') or die($db);
         // dd($request);
         $date = $request->tanggalMulai;
@@ -64,6 +65,8 @@ class MataKuliahController extends Controller
         //     'kelas' => '',
         // ]);
 
+        $validatedData = $request->file('image')->store('file-image');
+
         Matakuliah::create([
             'uuid' => $uuid,
             'namaMatakuliah' => $request->namaMatakuliah,
@@ -73,6 +76,11 @@ class MataKuliahController extends Controller
             'tanggalSelesai' => $request->tanggalSelesai,
             'jumlahPertemuan' => $request->jumlahPertemuan,
             'kelas' => $request->kelas,
+        ]);
+
+        QrCode::create([
+            'qrcode_img' => $validatedData,
+            'id_daftarMahasiswa' => 1
         ]);
 
         $dosen_ids = $request->dosen_id;
@@ -87,7 +95,7 @@ class MataKuliahController extends Controller
         // dd($updatedData);
         // $validatedData['user_id'] = auth()->user()->id;
 
-        return redirect('mata-kuliah')->with('success', 'Jadwal baru telah dibuat');
+        return redirect('mata-kuliah')->with('toast_success', 'Jadwal baru telah dibuat');
     }
     public function edit(Matakuliah $matakuliah)
     {
@@ -133,13 +141,13 @@ class MataKuliahController extends Controller
                 'matakuliah_id' => $uuid,
             ]);
         }
-        return redirect('mata-kuliah')->with('success', 'Jadwal berhasil diperbaharui');
+        return redirect('mata-kuliah')->with('toast_success', 'Jadwal berhasil diperbaharui');
     }
     public function destroy(Matakuliah $matakuliah,)
     {
         Matakuliah::destroy($matakuliah->id);
 
-        return redirect('mata-kuliah')->with('warning', 'Data Deleted Succesfellu');
+        return redirect('mata-kuliah')->with('toast_warning', 'Data Deleted Succesfellu');
     }
     public function show($key)
     {
@@ -194,9 +202,9 @@ class MataKuliahController extends Controller
 
         ]);
         if ($matakliahRef) {
-            return redirect('show-matakuliah/' . $id)->with('success', 'Mahasiswa berhasil ditambahkan');
+            return redirect('show-matakuliah/' . $id)->with('toast_success', 'Mahasiswa berhasil ditambahkan');
         } else {
-            return redirect('show-matakuliah/' . $id)->with('warning', 'Mahasiswa gagal di tambahkan');
+            return redirect('show-matakuliah/' . $id)->with('toast_warning', 'Mahasiswa gagal di tambahkan');
         }
     }
 
@@ -206,7 +214,7 @@ class MataKuliahController extends Controller
         // dd($id);
         mahasiswa::destroy($mahasiswa->id);
 
-        return redirect('show-matakuliah/' . $id)->with('success', 'Mahasiswa berhasil dihapus');
+        return redirect('show-matakuliah/' . $id)->with('toast_success', 'Mahasiswa berhasil dihapus');
     }
 
     public function mengubah($id, $bid)
@@ -217,7 +225,7 @@ class MataKuliahController extends Controller
         if ($editdata) {
             return view('dashboard.matakuliah.mahasiswa.edit', compact('editdata', 'key', 'id2'));
         } else {
-            return redirect('mata-kuliah')->with('warning', 'Data is Not Found');
+            return redirect('mata-kuliah')->with('toast_warning', 'Data is Not Found');
         }
     }
     public function mengupdate(Request $request, $id, $id2)
@@ -232,9 +240,9 @@ class MataKuliahController extends Controller
             ->update($updateData);
 
         if ($res_updated) {
-            return redirect('mata-kuliah')->with('success', 'Data Updated Succesfully');
+            return redirect('mata-kuliah')->with('toast_success', 'Data Updated Succesfully');
         } else {
-            return redirect('mata-kuliah')->with('success', 'Data Not Updated');
+            return redirect('mata-kuliah')->with('toast_success', 'Data Not Updated');
         }
     }
 }

@@ -162,7 +162,7 @@
                                     </h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="/add-matakuliah" method="post" autocomplete="off">
+                                    <form action="/add-matakuliah" method="post" autocomplete="off" enctype="multipart/form-data">
                                         @csrf
                                         <label for="dosen">Nama Dosen</label>
                                         <div id="example-optionClass-container">
@@ -173,6 +173,10 @@
                                             </select>
                                         </div>
                                         <br>
+                                        <div class="input-group mb-3">
+                                            <input type="file" class="form-control" name="image" id="image">
+                                            <label class="input-group-text" for="image">Upload</label>
+                                        </div>
                                         <div class="mb-3">
                                             <label for="matakuliah" class="form-label">Nama Matakuliah</label>
                                             <select class="form-select" name="namaMatakuliah">

@@ -36,6 +36,9 @@ Route::get('/mata-kuliah/destroy/{matakuliah:id}', [MatakuliahController::class,
 Route::get('/relasiModel', [MatakuliahController::class, 'indexRelasiModel']);
 Route::get('/dosen', [MatakuliahController::class, 'indexDosen']);
 
+Route::post('/qrcode', [MatakuliahController::class, 'qrCode']);
+Route::get('/qrcode/{id}', [MatakuliahController::class, 'getQrCode']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

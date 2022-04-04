@@ -6,6 +6,7 @@ use App\Helper\ApiFormatter;
 use App\Http\Controllers\Controller;
 use App\Models\Dosen;
 use App\Models\Matakuliah;
+use App\Models\QrCode;
 use App\Models\relasiModel;
 use Exception;
 use Illuminate\Http\Request;
@@ -34,11 +35,30 @@ class MatakuliahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function qrCode(Request $request)
     {
-        //
+        $validatedData = $request->file('image')->store('file-image');
+        $data = QrCode::create([
+            'qrcode_img' => $validatedData,
+        ]);
+
+        if ($data) {
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
     }
 
+    public function getQrCode($id)
+    {
+        qrCode::where('qrcode_img', '=', $id)->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil mendapatkan',
+            'qrcode_img' => $id,
+        ], 200);
+    }
     /**
      * Store a newly created resource in storage.
      *
