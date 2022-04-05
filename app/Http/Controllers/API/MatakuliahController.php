@@ -38,10 +38,12 @@ class MatakuliahController extends Controller
      */
     public function qrCode(Request $request)
     {
-        $validatedData = $request->file('image')->store('file-image');
-        $data = QrCode::create([
-            'qrcode_img' => $validatedData,
-        ]);
+        $data = QrCode::create($request->all());
+        if($request->hasFile('qrcode_img')){
+            $request->file('qrcode_img')->move('file-image/', $request->file('qrcode_img')->getClientOriginalName());
+            $data->qrcode_img = $request->file('qrcode_img')->getClientOriginalName();
+            $data->save();
+        }
 
         if ($data) {
             return ApiFormatter::createApi(200, 'Success', $data);
@@ -52,13 +54,14 @@ class MatakuliahController extends Controller
 
     public function getQrCode($id)
     {
-        $data = DB::table('qr_codes')->where('qrcode_img', $id)->get();
+        
+        $data = qrCode::where('qrcode_img', '=', $id)->get();
 
-        if ($data) {
-            return ApiFormatter::createApi(200, 'Success', $data);
-        } else {
-            return ApiFormatter::createApi(400, 'Failed');
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'DIkenali',
+            'qrcode_image' => $data
+        ], 200);
     }
     /**
      * Store a newly created resource in storage.

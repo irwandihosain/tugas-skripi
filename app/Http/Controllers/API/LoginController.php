@@ -56,17 +56,17 @@ class LoginController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak dikenali'
-
             ], 401);
         }
         $dosen->tokens()->delete();
         $data = $dosen->createToken($request->email)->plainTextToken;
 
-        if ($data) {
-            return ApiFormatter::createApi(200, 'Success', $data);
-        } else {
-            return ApiFormatter::createApi(400, 'Failed');
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'DIkenali',
+            'token' => $data,
+            'user' => $dosen
+        ], 200);
     }
 
     /**
