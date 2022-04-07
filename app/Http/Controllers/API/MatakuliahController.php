@@ -204,12 +204,13 @@ class MatakuliahController extends Controller
                 'keterangan' => $request->keterangan,
                 'pertemuan' => $request->pertemuan,
                 'nama' => $request->nama,
+                'matakuliah_id' => $request->matakuliah_id,
             ]);
 
             if ($data) {
                 return ApiFormatter::createApi(200, 'Success', $data);
             } else {
-                return ApiFormatter::createApi(400, 'Failed');
+                return ApiFormatter::createApi(400, 'Faileds');
             }
         } catch (Exception $error) {
             return ApiFormatter::createApi(400, 'Failed');
