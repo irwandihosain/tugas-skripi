@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Helper\ApiFormatter;
 use App\Http\Controllers\Controller;
+use App\Models\Absensi;
 use App\Models\Dosen;
 use App\Models\Matakuliah;
 use App\Models\QrCode;
@@ -192,6 +193,25 @@ class MatakuliahController extends Controller
         if ($data) {
             return ApiFormatter::createApi(200, 'Success', $data);
         } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
+    }
+
+    public function uploadAbsensi(Request $request){
+        try {
+            $data =  Absensi::create([
+                'nim' => $request->nim,
+                'keterangan' => $request->keterangan,
+                'pertemuan' => $request->pertemuan,
+                'nama' => $request->nama,
+            ]);
+
+            if ($data) {
+                return ApiFormatter::createApi(200, 'Success', $data);
+            } else {
+                return ApiFormatter::createApi(400, 'Failed');
+            }
+        } catch (Exception $error) {
             return ApiFormatter::createApi(400, 'Failed');
         }
     }

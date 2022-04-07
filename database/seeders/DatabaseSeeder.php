@@ -6,6 +6,7 @@ use App\Models\Dosen;
 use App\Models\Fakultas;
 use App\Models\Hari;
 use App\Models\Kelas;
+use App\Models\Matakuliah;
 use App\Models\Pertemuan;
 use App\Models\RealMatakuliah;
 use App\Models\Ruangan;

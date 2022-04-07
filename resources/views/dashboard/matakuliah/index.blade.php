@@ -144,8 +144,8 @@
                                             <td>{{ $mata_kuliah->namaMatakuliah }}</td>
                                             <td>{{ $mata_kuliah->jam  }}</td>
                                             <td>{{ $mata_kuliah->ruangan  }}</td>
-                                            <td>{{ $mata_kuliah->tanggalSelesai  }}</td>
                                             <td>{{ $mata_kuliah->tanggalMulai  }}</td>
+                                            <td>{{ $mata_kuliah->tanggalSelesai  }}</td>
                                             <td>{{ $mata_kuliah->jumlahPertemuan  }}</td>
                                             <td>{{ $mata_kuliah->kelas  }}</td>
                                             <td><a href="{{ url('show-matakuliah/'.$mata_kuliah->id) }}" class="btn btn-sm btn-primary">View</a></td>
