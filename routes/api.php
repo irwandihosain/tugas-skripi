@@ -27,6 +27,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 Route::post('/register', [LoginController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    // Route::resource('produk', ProductController::class);
+    Route::post('/logoutAdmin', [LoginController::class, 'logoutAdmin']);
+});
+Route::post('/loginAdmin', [LoginController::class, 'loginAdmin']);
+
 Route::get('/mata-kuliah', [MatakuliahController::class, 'index']);
 Route::post('/mata-kuliah/store', [MatakuliahController::class, 'store']);
 Route::get('/mata-kuliah/show/{id}', [MatakuliahController::class, 'show']);

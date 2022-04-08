@@ -92,9 +92,32 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function loginAdmin(Request $request)
     {
-        //
+        {
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required',
+            ]);
+    
+            $admin = User::where('email', $request->email)->first();
+    
+            if (!$admin || !Hash::check($request->password, $admin->password)) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Tidak dikenali'
+                ], 401);
+            }
+            $admin->tokens()->delete();
+            $data = $admin->createToken($request->email)->plainTextToken;
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'DIkenali',
+                'token' => $data,
+                'user' => $admin
+            ], 200);
+        }
     }
 
     /**
@@ -103,9 +126,17 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function logoutAdmin(Request $request)
     {
-        //
+        {
+            auth()->user()->tokens()->delete();
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil Logout',
+    
+            ], 200);
+        }
     }
 
     /**

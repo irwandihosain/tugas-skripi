@@ -350,9 +350,9 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "myFile",
+							"key": "qrcode_img",
 							"type": "file",
-							"src": "/C:/Irwandi/01 CSS Grid/Latihan/img/1.jpg"
+							"src": "/C:/Users/Asus/Pictures/1720221089.png"
 						},
 						{
 							"key": "",
@@ -363,7 +363,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/qrcode",
+					"raw": "http://127.0.0.1:8000/api/qrcode",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -373,6 +373,7 @@
 					],
 					"port": "8000",
 					"path": [
+						"api",
 						"qrcode"
 					]
 				}
@@ -410,7 +411,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/qrcode/DwxnT5LCblOzjYTgUZo9VCQ1i9OaZqAhZbgEGssF.jpg",
+					"raw": "http://127.0.0.1:8000/api/qrcode/3.jpg",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -422,7 +423,7 @@
 					"path": [
 						"api",
 						"qrcode",
-						"DwxnT5LCblOzjYTgUZo9VCQ1i9OaZqAhZbgEGssF.jpg"
+						"3.jpg"
 					]
 				}
 			},
@@ -453,10 +454,9 @@
 							"type": "text"
 						},
 						{
-							"key": "",
-							"value": "",
-							"type": "text",
-							"disabled": true
+							"key": "matakuliah_id",
+							"value": "1",
+							"type": "text"
 						},
 						{
 							"key": "keterangan",
@@ -467,6 +467,12 @@
 							"key": "pertemuan",
 							"value": "1",
 							"type": "text"
+						},
+						{
+							"key": "nama",
+							"value": "",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
@@ -483,6 +489,99 @@
 					"path": [
 						"api",
 						"absensi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "irwandihhosain@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/loginAdmin",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"loginAdmin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 1|rzKbmaSf2xLg62Bl1SfyfE1ewUj7vZen7TJeRYGM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/logoutAdmin",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logoutAdmin"
 					]
 				}
 			},
