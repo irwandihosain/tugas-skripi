@@ -6,6 +6,7 @@ use App\Helper\ApiFormatter;
 use App\Http\Controllers\Controller;
 use App\Models\Absensi;
 use App\Models\Dosen;
+use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
 use App\Models\QrCode;
 use App\Models\relasiModel;
@@ -213,6 +214,17 @@ class MatakuliahController extends Controller
                 return ApiFormatter::createApi(400, 'Faileds');
             }
         } catch (Exception $error) {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
+    }
+
+    public function getMahasiswa($id)
+    {
+        $data = Mahasiswa::where('matakuliah_id', '=', $id)->get();
+
+        if ($data) {
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } else {
             return ApiFormatter::createApi(400, 'Failed');
         }
     }

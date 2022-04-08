@@ -41,6 +41,8 @@ Route::get('/qrcode/{id}', [MatakuliahController::class, 'getQrCode']);
 
 Route::post('/absensi', [MatakuliahController::class, 'uploadAbsensi']);
 
+Route::get('/mahasiswa/{id}', [MatakuliahController::class, 'getMahasiswa']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
