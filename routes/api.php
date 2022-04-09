@@ -46,6 +46,7 @@ Route::post('/qrcode', [MatakuliahController::class, 'qrCode']);
 Route::get('/qrcode/{id}', [MatakuliahController::class, 'getQrCode']);
 
 Route::post('/absensi', [MatakuliahController::class, 'uploadAbsensi']);
+Route::get('/getAbsensi/{id}', [MatakuliahController::class, 'getAbsensi']);
 
 Route::get('/mahasiswa/{id}', [MatakuliahController::class, 'getMahasiswa']);
 
