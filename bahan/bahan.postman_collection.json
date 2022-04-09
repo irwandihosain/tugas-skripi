@@ -465,7 +465,7 @@
 						},
 						{
 							"key": "pertemuan",
-							"value": "1",
+							"value": "3",
 							"type": "text"
 						},
 						{
@@ -611,7 +611,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/getAbsensi/2",
+					"raw": "http://127.0.0.1:8000/api/getAbsensi/1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -623,7 +623,7 @@
 					"path": [
 						"api",
 						"getAbsensi",
-						"2"
+						"1"
 					]
 				}
 			},
