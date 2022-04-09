@@ -218,12 +218,12 @@ class MatakuliahController extends Controller
     }
     public function getAbsensi($id)
     {
-        $data = Absensi::where('id', '=', $id)->get();
+        $data = Absensi::where('matakuliah_id', '=', $id)->get();
 
-        if ($data) {
-            return ApiFormatter::createApi(200, 'Success', $data);
-        } else {
-            return ApiFormatter::createApi(400, 'Failed');
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'DIkenali',
+            'data' => $data,
+        ], 200);
     }
 }
