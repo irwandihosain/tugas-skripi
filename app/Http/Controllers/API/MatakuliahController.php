@@ -216,4 +216,14 @@ class MatakuliahController extends Controller
             return ApiFormatter::createApi(400, 'Failed');
         }
     }
+    public function getAbsensi($id)
+    {
+        $data = Absensi::where('id', '=', $id)->get();
+
+        if ($data) {
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
+    }
 }
